@@ -7,6 +7,7 @@ import {
   RequestedPackagesEdit
 } from "src/features/requestedPackages";
 import { Dependencies } from "src/features/dependencies";
+import { Environments } from "./features/environments";
 
 export const App = () => {
   const channelsList = ["conda-store", "default", "conda forge"];
@@ -79,6 +80,38 @@ export const App = () => {
     "python>=1.1",
     { pip: ["test"] }
   ];
+  const environmentsData = [
+    {
+      id: 2,
+      namespace: {
+        id: 1,
+        name: "default"
+      },
+      name: "test_env_1",
+      current_build_id: 2,
+      current_build: null
+    },
+    {
+      id: 1,
+      namespace: {
+        id: 2,
+        name: "filesystem"
+      },
+      name: "python-flask-env",
+      current_build_id: 1,
+      current_build: null
+    },
+    {
+      id: 3,
+      namespace: {
+        id: 1,
+        name: "default"
+      },
+      name: "test_env_2",
+      current_build_id: 3,
+      current_build: null
+    }
+  ];
 
   return (
     <>
@@ -88,6 +121,7 @@ export const App = () => {
       <ChannelsList channelList={channelsList} />
       <ChannelsEdit channelsList={channelsList} />
       <Dependencies mode="edit" dependencies={dependencies} />
+      <Environments list={environmentsData} />
     </>
   );
 };
